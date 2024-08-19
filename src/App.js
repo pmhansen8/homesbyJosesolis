@@ -8,7 +8,7 @@ import Signup from './pages/Signup'
 function App() {
 
   const [user, setUser] = useState(null)
-  
+    document.title = "Homes by Jose Solis"
   return (
   <UserContext.Provider value={{user, setUser}}>
      <Signup/>
