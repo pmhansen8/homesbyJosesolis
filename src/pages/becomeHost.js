@@ -409,10 +409,10 @@ export default function BecomeHost() {
                     onChange={handleChange}
                   >
                     <option>Select</option>
-                    <option value="Personal Rooms">Personal Rooms</option>
-                    <option value="Family Apartments">Family Apartments</option>
-                    <option value="Villas For Vacation">
-                      Villas For Vacation
+                    <option value="Personal Home">Personal Home</option>
+                    <option value="Family Home">Family Home</option>
+                    <option value="Vacation Home">
+                      Vacation Home
                     </option>
                   </Form.Control>
                 </Form.Group>
