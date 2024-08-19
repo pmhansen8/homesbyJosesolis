@@ -120,7 +120,7 @@ export default function MyListings() {
                   </Button>
                   <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
-                      <Modal.Title>DevBud</Modal.Title>
+                      <Modal.Title>Homes by Jose Solis</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>Are you sure?</Modal.Body>
                     <Modal.Footer>
