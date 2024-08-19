@@ -17,9 +17,9 @@ export default function CategoriesSection() {
           <Link to="/personal-rooms"><Card className="category-cards text-dark mt-3">
             <Card.Img variant="top" src={personalRoomsPic} className="category-img"/>
             <Card.Body>
-              <Card.Title>Personal Rooms</Card.Title>
+              <Card.Title>Orlando Homes</Card.Title>
               <Card.Text>
-                Find Rooms that you won't have to share with anyone
+                Orlando Homes
               </Card.Text>
             </Card.Body>
           </Card></Link>
@@ -28,9 +28,9 @@ export default function CategoriesSection() {
           <Link to="/family-apartments"><Card className="category-cards text-dark mt-3">
             <Card.Img variant="top" src={familyApartments} className="category-img"/>
             <Card.Body>
-              <Card.Title>Family Apartments</Card.Title>
+              <Card.Title>Kissimmee Homes</Card.Title>
               <Card.Text>
-              Find rooms to share and live affordably with the perfect roommates.
+              Kissimmee Homes
               </Card.Text>
             </Card.Body>
           </Card></Link>
@@ -39,9 +39,9 @@ export default function CategoriesSection() {
           <Link to="/vacation-villas"><Card className="category-cards text-dark mt-3">
             <Card.Img variant="top" src={villas} className="category-img"/>
             <Card.Body>
-              <Card.Title>Villas For Vacation</Card.Title>
+              <Card.Title>Altamonte</Card.Title>
               <Card.Text>
-              Rent an entire house, where the owner has traveled or doesn't live there anymore.
+              Altamonte homes
               </Card.Text>
             </Card.Body>
           </Card></Link>

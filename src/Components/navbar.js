@@ -11,7 +11,7 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import firebase from 'firebase'
 import { Container } from 'react-bootstrap';
 
-export default function NavigationBar({companyName="DevBud"}) {
+export default function NavigationBar({companyName="Homes by Jose Solis"}) {
 
     //Authstate
     const [authState, setAuthState ] = useState(null);
@@ -72,9 +72,9 @@ const Logout = () => {
       >Home</Nav.Link>
       {authState ? (
        <React.Fragment>
-      <Nav.Link as={Link} to="/personal-rooms" className={pos === "top" ? "text-light": "text-dark"}>Personal Rooms</Nav.Link>
-      <Nav.Link as={Link} to="/family-apartments" className={pos === "top" ? "text-light": "text-dark"}>Family Apartments</Nav.Link>
-      <Nav.Link as={Link} to="/vacation-villas" className={pos === "top" ? "text-light": "text-dark"}>Villas for Vacation</Nav.Link>
+          <Nav.Link as={Link} to="/about" className={pos === "top" ? "text-light": "text-dark"}>About Us</Nav.Link>
+      <Nav.Link as={Link} to="/listings" className={pos === "top" ? "text-light": "text-dark"}>Listings</Nav.Link>
+      <Nav.Link as={Link} to="/contact-me" className={pos === "top" ? "text-light": "text-dark"}>Contact Me</Nav.Link>
       </React.Fragment>
       ):""}
     </Nav>
@@ -86,8 +86,8 @@ const Logout = () => {
         <>
         <Container>
         <Nav.Link as={Link} to="/my-profile" className="text-dark">My Profile</Nav.Link>
-        <Nav.Link as={Link} to="/my-bookings" className="text-dark">Bookings</Nav.Link>
-        <Nav.Link as={Link} to="/my-home-bookings" className="text-dark">Host Bookings</Nav.Link>
+        <Nav.Link as={Link} to="/my-bookings" className="text-dark">Saved Homes</Nav.Link>
+        <Nav.Link as={Link} to="/mortgage-calculator" className="text-dark">Mortgage Calulator</Nav.Link>
         </Container>
         </>
         ) : (
@@ -107,7 +107,7 @@ const Logout = () => {
     {authState ? (
     <>
     <Navbar.Text>
-      <Link to="/become-host"><Button className="host-btn" variant="outline-primary">Become a Host</Button></Link>
+      <Link to="/become-host"><Button className="host-btn" variant="outline-primary">Search Homes</Button></Link>
     </Navbar.Text>
     </>
       ):""}

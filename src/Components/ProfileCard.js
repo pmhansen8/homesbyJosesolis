@@ -49,6 +49,8 @@ useEffect(() => {
         {setLoading(false)}
       }
     }).catch((error) => {
+        setProfileCheck(false)
+        {setLoading(false)}
       console.error(error);
     });
     },[userUid])

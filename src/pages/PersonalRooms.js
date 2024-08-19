@@ -68,7 +68,6 @@ export default function PersonalRooms() {
     database
       .ref("properties")
       .orderByChild("category")
-      .equalTo("Personal Rooms")
       .on("value", (snapshot) => {
         const items = [];
         snapshot.forEach((childSnapshot) => {

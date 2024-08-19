@@ -13,12 +13,15 @@ import CreateProfile from './pages/CreateProfile'
 import SingleProperty from './pages/SinglePropertyPage'
 import SuccessfulBooking from './pages/SuccessfulBooking'
 import MyBookings from './pages/MyBookings';
-import MyHomeBookings from './pages/MyHomeBookings';
-import PersonalRooms from './pages/PersonalRooms';
 import FamilyApartments from './pages/FamilyApartments';
-import VacationVillas from './pages/VacationVillas';
 import ScrollToTop from './Components/ScrollToTop';
 import PublicProfilePage from './pages/PublicProfilePage';
+import {About}  from './pages/About'
+import {ContactUs} from './pages/Contactme'
+import MortgageCalculator from "./pages/MortgageCalculator";
+import PersonalRooms from "./pages/PersonalRooms";
+
+
 
 
 const routing = (
@@ -35,10 +38,10 @@ const routing = (
     <Route exact path="/property" component={SingleProperty}/>
     <Route exact path="/done-booking" component={SuccessfulBooking}/>
     <Route exact path="/my-bookings" component={MyBookings}/>
-    <Route exact path="/my-home-bookings" component={MyHomeBookings}/>
-    <Route exact path="/personal-rooms" component={PersonalRooms}/>
-    <Route exact path="/family-apartments" component={FamilyApartments}/>
-    <Route exact path="/vacation-villas" component={VacationVillas}/>
+    <Route exact path="/mortgage-calculator" component={MortgageCalculator}/>
+    <Route exact path="/about" component={About}/>
+    <Route exact path="/listings" component={PersonalRooms}/>
+    <Route exact path="/contact-me" component={ContactUs}/>
     <Route exact path="/find-roommates" component={PublicProfilePage}/>
   </Router>
 )

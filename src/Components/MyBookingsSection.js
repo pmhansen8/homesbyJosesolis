@@ -113,7 +113,7 @@ export default function MyBookingsSection() {
       <div className="outer text-center">
       <div className="middle">
       <div className="inner h5">
-       You have not done any bookings
+       You have not done any saved homes
        </div>
        </div>
        </div>
