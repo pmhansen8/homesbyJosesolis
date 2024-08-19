@@ -256,21 +256,18 @@ export default function SinglePropertyPage() {
                     <Row>
                       <Col sm={12} lg={3} md={3}>
                         <p className="text-lead">
-                          <FontAwesomeIcon icon={faArrowCircleRight} /> Per
-                          Night: {data.per_night}
+                          <FontAwesomeIcon icon={faArrowCircleRight} /> Listing Price: {data.per_night}
                         </p>
                       </Col>
                       <Col sm={12} lg={3} md={3}>
                         <p className="text-lead">
-                          <FontAwesomeIcon icon={faArrowCircleRight} /> Per
-                          Week: {data.per_week}
+                          <FontAwesomeIcon icon={faArrowCircleRight} /> Reduced Price: {data.per_week}
                         </p>
                       </Col>
                       <Col sm={12} lg={3} md={3}>
                         <p className="text-lead">
                           {" "}
-                          <FontAwesomeIcon icon={faArrowCircleRight} /> Per
-                          Month: {data.per_month}
+                          <FontAwesomeIcon icon={faArrowCircleRight} /> Interest Rate: {data.per_month}
                         </p>
                       </Col>
                       <Col sm={12} lg={3} md={3}>
