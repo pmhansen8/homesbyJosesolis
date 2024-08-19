@@ -462,59 +462,15 @@ export default function BecomeHost() {
                   sm={12}
                   controlId="formGridZip"
                 >
-                  <Form.Label>Price Per Night</Form.Label>
+                  <Form.Label>listing Price</Form.Label>
                   <Form.Control
                     type="number"
-                    placeholder="Eg. 1500"
+                    placeholder="Eg. 150000"
                     value={per_night}
                     onChange={(e) => setPer_night(e.target.value)}
                   required/>
                 </Form.Group>
-                <Form.Group
-                  as={Col}
-                  lg={3}
-                  md={3}
-                  sm={12}
-                  controlId="formGridZip"
-                >
-                  <Form.Label>Price Per Week</Form.Label>
-                  <Form.Control
-                    type="number"
-                    placeholder="Eg. 7000"
-                    value={per_week}
-                    onChange={(e) => setPer_week(e.target.value)}
-                  />
-                </Form.Group>
-                <Form.Group
-                  as={Col}
-                  lg={3}
-                  md={3}
-                  sm={12}
-                  controlId="formGridZip"
-                >
-                  <Form.Label>Price Per Month</Form.Label>
-                  <Form.Control
-                    type="number"
-                    placeholder="Eg. 25000"
-                    value={per_month}
-                    onChange={(e) => setPer_month(e.target.value)}
-                  />
-                </Form.Group>
-                <Form.Group
-                  as={Col}
-                  lg={3}
-                  md={3}
-                  sm={12}
-                  controlId="formGridZip"
-                >
-                  <Form.Label>Price Per Year</Form.Label>
-                  <Form.Control
-                    type="number"
-                    placeholder="Eg. 650000"
-                    value={per_year}
-                    onChange={(e) => setPer_year(e.target.value)}
-                  />
-                </Form.Group>
+
               </Form.Row>
 
               <Form.Row>

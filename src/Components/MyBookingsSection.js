@@ -7,7 +7,7 @@ import {
   faBed,
   faShower,
   faMapMarkerAlt,
-  faRupeeSign,
+  faDollarSign,
   faCalendarAlt,
   faCalendar
 } from "@fortawesome/free-solid-svg-icons";
@@ -81,7 +81,6 @@ export default function MyBookingsSection() {
             title: data.title,
             city: data.city,
             address: data.address,
-            price: data.price,
           });
         });
         setListings(items);
@@ -139,7 +138,7 @@ export default function MyBookingsSection() {
                  <Card.Text className="p-2 text-dark">
                    <FontAwesomeIcon icon={faMapMarkerAlt} /> {data.address}&nbsp;,{data.city}
                    <span className="p-2">
-                     <FontAwesomeIcon icon={faRupeeSign} /> {data.price} /Night <br/>
+                     <FontAwesomeIcon icon={faDollarSign} /> {data.price} /Night <br/>
                      <FontAwesomeIcon icon={faCalendar} /> <b>Arrival Date:</b> {data.arrivalDate} <br/>
                      <FontAwesomeIcon icon={faCalendarAlt} /> <b>Departure Date:</b> {data.departDate} <br/>
                    </span>

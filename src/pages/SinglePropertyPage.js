@@ -399,56 +399,8 @@ export default function SinglePropertyPage() {
                 </Card>
               </Col>
 
-              <Col lg={4} md={4} sm={12}>
-                <Card className="text-center booking-form">
-                  <Card.Header className="card-booking-form-header">
-                    ₹ {data.per_night}/Night
-                  </Card.Header>
-                  <Card.Body>
-                    <Form onSubmit={submitBooking}>
-                      <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Arrival Date</Form.Label>
-                        <Form.Control
-                          type="date" required
-                          onChange={(e) => setArrivalDate(e.target.value)}
-                        />
-                      </Form.Group>
-                      <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Depart Date</Form.Label>
-                        <Form.Control
-                          type="date" required
-                          onChange={(e) => setDepartDate(e.target.value)}
-                        />
-                      </Form.Group>
-                      <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Number of Guestes</Form.Label>
-                        <Form.Control
-                          type="number" required
-                          onChange={(e) => setGuests(e.target.value)}
-                        />
-                      </Form.Group>
-                      {/* TODO Booking button */}
-                      {/* {userUid==hostUid? "" : ""} */}
-                      <Button
-                        variant="primary"
-                        className="btn-block"
-                        type="submit"
-                      >
-                        Book Now
-                      </Button>
-                    </Form>
-                  </Card.Body>
 
-                  {/* TODO: */}
-                  
-                  <Card.Footer className="text-muted">
-                    <Link to={`/find-roommates?${data.city}Yes`}><Button variant="warning">
-                      Find Roommates in {data.city}
-                    </Button></Link>
-                  </Card.Footer>
 
-                </Card>
-              </Col>
             </Row>
           </Container>
           <br />

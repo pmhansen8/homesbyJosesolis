@@ -17,7 +17,7 @@ import {
   faBed,
   faShower,
   faMapMarkerAlt,
-  faRupeeSign,
+  faDollarSign,
 } from "@fortawesome/free-solid-svg-icons";
 import { v4 as uuidv4 } from "uuid";
 import firebase from "firebase";
@@ -126,7 +126,7 @@ export default function PersonalRooms() {
                     <FontAwesomeIcon icon={faShower} /> {data.bathrooms}&nbsp;
                     <FontAwesomeIcon icon={faMapMarkerAlt} /> {data.city}&nbsp;
                     <span className="p-2">
-                      <FontAwesomeIcon icon={faRupeeSign} /> {data.per_month}
+                      <FontAwesomeIcon icon={faDollarSign} /> {data.per_month}
                     </span>
                   </Card.Text>
                 </Card.Body>

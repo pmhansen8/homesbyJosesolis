@@ -22,7 +22,7 @@ export default function PublicProfiles() {
   const [profilesCheck, setProfilesCheck] = useState(null);
   //snapshots
   const [profiles, setProfiles] = useState([]);
-   //spinner
+   //spinne
    const [loading, setLoading] = useState(true)
 
    const [filterQuery, setFilterQuery] = useState("")

@@ -8,7 +8,6 @@ export default function MyProfile() {
         <div>
         <Navbar/>
         <ProfileCard/>
-        <MyListings/>
         </div>
     )
 }

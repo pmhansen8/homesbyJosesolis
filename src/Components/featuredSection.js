@@ -15,7 +15,7 @@ import {
   faBed,
   faShower,
   faMapMarkerAlt,
-  faRupeeSign,
+  faDollarSign,
 } from "@fortawesome/free-solid-svg-icons";
 import { v4 as uuidv4 } from "uuid";
 import firebase from "firebase";
@@ -78,7 +78,7 @@ export default function MyListings() {
             bedrooms: data.bedrooms,
             bathrooms: data.bathrooms,
             city: data.city,
-            per_month: data.per_month,
+            per_night: data.per_night,
           });
         });
         setListings(items);
@@ -125,7 +125,7 @@ export default function MyListings() {
                     <FontAwesomeIcon icon={faShower} /> {data.bathrooms}&nbsp;&nbsp;
                     <FontAwesomeIcon icon={faMapMarkerAlt} /> {data.city}&nbsp;&nbsp;
                     <span className="p-2">
-                      <FontAwesomeIcon icon={faRupeeSign} /> {data.per_month}
+                      <FontAwesomeIcon icon={faDollarSign} /> {data.per_night}
                     </span>
                   </Card.Text>
                 </Card.Body>
