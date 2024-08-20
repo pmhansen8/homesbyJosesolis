@@ -75,6 +75,7 @@ const Logout = () => {
           <Nav.Link as={Link} to="/about" className={pos === "top" ? "text-light": "text-dark"}>About Us</Nav.Link>
       <Nav.Link as={Link} to="/listings" className={pos === "top" ? "text-light": "text-dark"}>Listings</Nav.Link>
       <Nav.Link as={Link} to="/contact-me" className={pos === "top" ? "text-light": "text-dark"}>Contact Me</Nav.Link>
+           <Nav.Link as={Link} to="sellers" className={pos === "top" ? "text-light": "text-dark"}>Sellers</Nav.Link>
       </React.Fragment>
       ):""}
     </Nav>

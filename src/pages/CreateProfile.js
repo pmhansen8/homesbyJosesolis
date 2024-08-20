@@ -14,7 +14,9 @@ export default function CreateProfile() {
 
 
     const [name, setName] = useState("")
+    const [gender, setGender] = useState("")
     const [city, setCity] = useState("")
+    const [age, setAge] = useState("")
     const [homeSearch, setHomeSearch] = useState("")
     const [userUid, setUserUid] = useState("")
     const [email, setEmail] = useState("")
@@ -28,8 +30,8 @@ export default function CreateProfile() {
      const [authState, setAuthState ] = useState("");
 
      useEffect(()=>{
-       setFilter(city + homeSearch)
-     },[city,homeSearch])
+       setFilter(homeSearch)
+     },[homeSearch])
 
      useEffect(() => {
          firebase.auth().onAuthStateChanged(function (user) {
@@ -102,6 +104,8 @@ export default function CreateProfile() {
           userUid:userUid,
           thumbnail: thumbnail,
           filter: filter,
+            age: age,
+            gender: gender,
         });
         setSubmit("Submitted")
       };
@@ -163,7 +167,7 @@ if(profileCheck === true){
 
       <Container className="mr-top-2">
         <Card>
-        <Card.Header className="text-center card-title card-header-create-profile">Create You Profile</Card.Header>
+        <Card.Header className="text-center card-title card-header-create-profile">Create Your Profile</Card.Header>
           <Card.Body>
             <Row>
             <Col sm={12} md={6} lg={6}>
@@ -185,6 +189,30 @@ if(profileCheck === true){
                     <Form.Control type="text" placeholder="City" onChange={(e)=>setCity(e.target.value)}/>
                   </Col>
                 </Form.Group>
+
+                  <Form.Group>
+                  <Form.Label column sm={2}>
+                      Age
+                  </Form.Label>
+                  <Col sm={10}>
+                      <Form.Control type="number" placeholder="Age" onChange={(e)=>setAge(e.target.value)}/>
+                  </Col>
+              </Form.Group>
+
+                  <Form.Group as={Row} controlId="formHorizontalGender">
+                      <Form.Label column sm={2}>
+                          Gender
+                      </Form.Label>
+                      <Col sm={10}>
+                          <Form.Control as="select" onChange={(e) => setGender(e.target.value)}>
+                              <option value="">Select Gender</option>
+                              <option value="Male">Male</option>
+                              <option value="Female">Female</option>
+                              <option value="Non-binary">Non-binary</option>
+                              <option value="Other">Other</option>
+                          </Form.Control>
+                      </Col>
+                  </Form.Group>
 
                 <fieldset>
     <Form.Group as={Row}>

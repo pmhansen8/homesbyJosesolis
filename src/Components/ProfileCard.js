@@ -1,11 +1,12 @@
-import React,{useEffect, useState} from 'react'
-import {Link} from 'react-router-dom'
+import  React,{useEffect, useState} from 'react'
+import {Link, Redirect} from 'react-router-dom'
 import {Row, Col, Jumbotron, Spinner, Button} from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { v4 as uuidv4 } from "uuid";
 import firebase from 'firebase'
 import { auth, database} from "../config";
+import redirect from "react-router-dom/es/Redirect";
 
 export default function ProfileCard() {
 
@@ -118,7 +119,12 @@ database.ref("My-Profile").orderByChild("userUid").equalTo(userUid).on('value', 
         >Change Status To: I'm searching for homes</Button>}</p>
         </Col>
         </Row>
-      </Jumbotron>
+            <div className="d-flex justify-content-end">
+                <Link to="/change-profile">
+                <Button> Update Profile</Button>
+                </Link>
+            </div>
+        </Jumbotron>
 
         ))}
         </div>

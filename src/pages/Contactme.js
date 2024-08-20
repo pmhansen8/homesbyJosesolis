@@ -20,10 +20,12 @@ export const ContactUs = () => {
         initialValues: {
             firstName: "",
             email: "",
-            comment: ""
+            comment: "",
+            number: ""
         },
         validationSchema: Yup.object({
             firstName: Yup.string().required('Required'),
+            number: Yup.number().required('Required'),
             email: Yup.string().email('Invalid email address').required('Required'),
             comment: Yup.string().required('Required')
         }),
@@ -78,6 +80,25 @@ export const ContactUs = () => {
                             />
                             {formik.errors.email && formik.touched.email && (
                                 <div style={{color: 'red', fontSize: '0.875rem'}}>{formik.errors.email}</div>
+                            )}
+                        </div>
+                        <div style={{marginBottom: '1rem'}}>
+                            <label htmlFor="number" style={{display: 'block', fontWeight: 'bold'}}>Number</label>
+                            <input
+                                id="number"
+                                name="number"
+                                value={formik.values.number}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                style={{
+                                    width: '100%',
+                                    padding: '0.5rem',
+                                    border: '1px solid #ccc',
+                                    borderRadius: '0.375rem'
+                                }}
+                            />
+                            {formik.errors.number && formik.touched.number && (
+                                <div style={{color: 'red', fontSize: '0.875rem'}}>{formik.errors.number}</div>
                             )}
                         </div>
                         <div style={{marginBottom: '1rem'}}>

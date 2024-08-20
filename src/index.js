@@ -10,6 +10,7 @@ import Home from './pages/Home'
 import SuccessfulPosting from './pages/SuccessfulPosting'
 import MyProfile from './pages/MyProfile'
 import CreateProfile from './pages/CreateProfile'
+import ChangeProfile from './pages/ChangeProfile'
 import SingleProperty from './pages/SinglePropertyPage'
 import SuccessfulBooking from './pages/SuccessfulBooking'
 import MyBookings from './pages/MyBookings';
@@ -20,6 +21,7 @@ import {About}  from './pages/About'
 import {ContactUs} from './pages/Contactme'
 import MortgageCalculator from "./pages/MortgageCalculator";
 import PersonalRooms from "./pages/PersonalRooms";
+import {HomeEvaluation} from "./pages/HomeEvaluation"
 
 
 
@@ -43,6 +45,8 @@ const routing = (
     <Route exact path="/listings" component={PersonalRooms}/>
     <Route exact path="/contact-me" component={ContactUs}/>
     <Route exact path="/find-roommates" component={PublicProfilePage}/>
+    <Route exact path="/change-profile" component={ChangeProfile}/>
+    <Route exact path="/sellers" component={HomeEvaluation}/>
   </Router>
 )
 
