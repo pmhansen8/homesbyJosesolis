@@ -2,7 +2,7 @@ import  React,{useEffect, useState} from 'react'
 import {Link, Redirect} from 'react-router-dom'
 import {Row, Col, Jumbotron, Spinner, Button} from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMapMarkerAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faMapMarkerAlt, faEnvelope, faCircleUser, faG } from '@fortawesome/free-solid-svg-icons'
 import { v4 as uuidv4 } from "uuid";
 import firebase from 'firebase'
 import { auth, database} from "../config";
@@ -102,15 +102,17 @@ database.ref("My-Profile").orderByChild("userUid").equalTo(userUid).on('value', 
         <h1 className="display-4">{data.name}</h1>
         <p className="lead"><FontAwesomeIcon icon={faMapMarkerAlt}/> {data.city}</p>
         <p><FontAwesomeIcon icon={faEnvelope}/> {data.email}</p>
+       <p><FontAwesomeIcon icon={faCircleUser}/> {data.age}</p>
+       <p><FontAwesomeIcon icon={faG}/> {data.gender}</p>
         <hr className="my-2" />
         <p>{data.homeSearch=="Yes" ? "I'm Searching For Homes" : ""}</p>
-        
+
         <p>{data.homeSearch =="Yes" ?<Button variant="warning"
         onClick={()=>{
           firebase.database().ref("My-Profile").child(childKey)
         .set({ homeSearch: "No", city: city, email: email, name: name, thumbnail: thumbnail, userUid: userUid, filter: "No"})}
         }
-        >Remove Status</Button> : 
+        >Remove Status</Button> :
         <Button variant="success"
         onClick={()=>{
           firebase.database().ref("My-Profile").child(childKey)
