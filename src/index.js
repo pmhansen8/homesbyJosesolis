@@ -22,8 +22,8 @@ import {ContactUs} from './pages/Contactme'
 import MortgageCalculator from "./pages/MortgageCalculator";
 import PersonalRooms from "./pages/PersonalRooms";
 import {HomeEvaluation} from "./pages/HomeEvaluation"
-
-
+import {Reviews} from "./pages/Reviews";
+import {Testimonies} from './pages/Testimonies'
 
 
 const routing = (
@@ -47,6 +47,8 @@ const routing = (
     <Route exact path="/find-roommates" component={PublicProfilePage}/>
     <Route exact path="/change-profile" component={ChangeProfile}/>
     <Route exact path="/sellers" component={HomeEvaluation}/>
+    <Route exact path="/reviews" component={Reviews}/>
+    <Route exact path="/testimonies" component={Testimonies}/>
   </Router>
 )
 

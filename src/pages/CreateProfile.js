@@ -152,117 +152,120 @@ if(profileCheck === true){
       }
     
   return (
-    <>
-      <Navbar />
-      
-      <ToastContainer 
-        position="top-right"
-        autoClose={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-      />
+      <>
+          <Navbar />
 
-      <Container className="mr-top-2">
-        <Card>
-        <Card.Header className="text-center card-title card-header-create-profile">Create Your Profile</Card.Header>
-          <Card.Body>
-            <Row>
-            <Col sm={12} md={6} lg={6}>
-              <Form onSubmit={handleSubmit}>
-                <Form.Group as={Row} controlId="name">
-                  <Form.Label column sm={2}>
-                    Name
-                  </Form.Label>
-                  <Col sm={10}>
-                    <Form.Control type="text" placeholder="Your Name" value={name} onChange={(e)=>setName(e.target.value)}/>
-                  </Col>
-                </Form.Group>
+          <ToastContainer
+              position="top-right"
+              autoClose={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+          />
 
-                <Form.Group as={Row} controlId="formHorizontalPassword">
-                  <Form.Label column sm={2}>
-                    City
-                  </Form.Label>
-                  <Col sm={10}>
-                    <Form.Control type="text" placeholder="City" onChange={(e)=>setCity(e.target.value)}/>
-                  </Col>
-                </Form.Group>
+          <Container className="mr-top-2">
+              <Card>
+                  <Card.Header className="text-center card-title card-header-create-profile">Update Your Profile</Card.Header>
+                  <Card.Body>
+                      <Row>
+                          <Col sm={12} md={6} lg={6}>
+                              <Form onSubmit={handleSubmit}>
+                                  <Form.Group as={Row} controlId="name">
+                                      <Form.Label column sm={2}>
+                                          Name
+                                      </Form.Label>
+                                      <Col sm={10}>
+                                          <Form.Control type="text" placeholder="Your Name" value={name} onChange={(e)=>setName(e.target.value)}/>
+                                      </Col>
+                                  </Form.Group>
 
-                  <Form.Group>
-                  <Form.Label column sm={2}>
-                      Age
-                  </Form.Label>
-                  <Col sm={10}>
-                      <Form.Control type="number" placeholder="Age" onChange={(e)=>setAge(e.target.value)}/>
-                  </Col>
-              </Form.Group>
+                                  <Form.Group as={Row} controlId="formHorizontalCity">
+                                      <Form.Label column sm={2}>
+                                          City
+                                      </Form.Label>
+                                      <Col sm={10}>
+                                          <Form.Control type="text" placeholder="City" onChange={(e) => setCity(e.target.value)} />
+                                      </Col>
+                                  </Form.Group>
 
-                  <Form.Group as={Row} controlId="formHorizontalGender">
-                      <Form.Label column sm={2}>
-                          Gender
-                      </Form.Label>
-                      <Col sm={10}>
-                          <Form.Control as="select" onChange={(e) => setGender(e.target.value)}>
-                              <option value="">Select Gender</option>
-                              <option value="Male">Male</option>
-                              <option value="Female">Female</option>
-                              <option value="Non-binary">Non-binary</option>
-                              <option value="Other">Other</option>
-                          </Form.Control>
-                      </Col>
-                  </Form.Group>
+                                  <Form.Group as={Row} controlId="formHorizontalAge">
+                                      <Form.Label column sm={2}>
+                                          Age
+                                      </Form.Label>
+                                      <Col sm={10}>
+                                          <Form.Control type="number" placeholder="Age" onChange={(e) => setAge(e.target.value)} />
+                                      </Col>
+                                  </Form.Group>
 
-                <fieldset>
-    <Form.Group as={Row}>
-      <Form.Label as="legend" column sm={12}>
-        Are You Searching for homes ?
-      </Form.Label>
-      <Col sm={12}>
-        <Form.Check
-          type="radio"
-          label="Yes"
-          name="formHorizontalRadios"
-          id="formHorizontalRadios1"
-          value="Yes"
-          onChange={(e)=>setHomeSearch(e.target.value)}
-        />
-        <Form.Check
-          type="radio"
-          label="No"
-          name="formHorizontalRadios"
-          id="formHorizontalRadios3"
-          value="No"
-          onChange={(e)=>setHomeSearch(e.target.value)}
-        />
-      </Col>
-    </Form.Group>
-  </fieldset>
+                                  <Form.Group as={Row} controlId="formHorizontalGender">
+                                      <Form.Label column sm={2}>
+                                          Gender
+                                      </Form.Label>
+                                      <Col sm={10}>
+                                          <Form.Control as="select" onChange={(e) => setGender(e.target.value)}>
+                                              <option value="">Select Gender</option>
+                                              <option value="Male">Male</option>
+                                              <option value="Female">Female</option>
+                                              <option value="Non-binary">Non-binary</option>
+                                              <option value="Other">Other</option>
+                                          </Form.Control>
+                                      </Col>
+                                  </Form.Group>
 
-             <Form.Label>Upload Profile Picture</Form.Label>
-              <br />
-              <Form.Row>
-                <Form.Group as={Col} lg={12} md={12} sm={12}>
-                  <Form.File onChange={uploadProfilePicture}/>
-                </Form.Group>
-                </Form.Row>
-<hr/>
-                <Form.Group as={Row}>
-                  <Col sm={{ span: 10, offset: 2 }}>
-                    <Button type="submit">Submit</Button>
-                  </Col>
-                </Form.Group>
-              </Form>
-              </Col>
-              <Col sm={12} md={6} lg={6} className="profile-image-div">
-              {/* thumbnail here */}
-              <img src={thumbnail} className="img-fluid profile-thumb"/>
-              </Col>
-            </Row>
-          </Card.Body>
-        </Card>
-      </Container>
-    </>
+
+
+
+                                  <fieldset>
+                                      <Form.Group as={Row}>
+                                          <Form.Label as="legend" column sm={12}>
+                                              Are You Searching for homes ?
+                                          </Form.Label>
+                                          <Col sm={12}>
+                                              <Form.Check
+                                                  type="radio"
+                                                  label="Yes"
+                                                  name="formHorizontalRadios"
+                                                  id="formHorizontalRadios1"
+                                                  value="Yes"
+                                                  onChange={(e)=>setHomeSearch(e.target.value)}
+                                              />
+                                              <Form.Check
+                                                  type="radio"
+                                                  label="No"
+                                                  name="formHorizontalRadios"
+                                                  id="formHorizontalRadios3"
+                                                  value="No"
+                                                  onChange={(e)=>setHomeSearch(e.target.value)}
+                                              />
+                                          </Col>
+                                      </Form.Group>
+                                  </fieldset>
+
+                                  <Form.Label>Upload Profile Picture</Form.Label>
+                                  <br />
+                                  <Form.Row>
+                                      <Form.Group as={Col} lg={12} md={12} sm={12}>
+                                          <Form.File onChange={uploadProfilePicture}/>
+                                      </Form.Group>
+                                  </Form.Row>
+                                  <hr/>
+                                  <Form.Group as={Row}>
+                                      <Col sm={{ span: 10, offset: 2 }}>
+                                          <Button type="submit">Submit</Button>
+                                      </Col>
+                                  </Form.Group>
+                              </Form>
+                          </Col>
+                          <Col sm={12} md={6} lg={6} className="profile-image-div">
+                              {/* thumbnail here */}
+                              <img src={thumbnail} className="img-fluid profile-thumb"/>
+                          </Col>
+                      </Row>
+                  </Card.Body>
+              </Card>
+          </Container>
+      </>
   );
 }

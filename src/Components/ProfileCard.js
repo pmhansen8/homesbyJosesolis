@@ -24,6 +24,8 @@ export default function ProfileCard() {
     const [email, setEmail] = useState("")
     const [name, setName] = useState("")
     const [thumbnail, setThumbnail] = useState("")
+    const [gender, setgender] = useState("")
+    const [age, setage] = useState("")
     const [filterQuery, setFilterQuery] = useState("")
     const [yes, setYes] = useState("Yes")
 
@@ -69,6 +71,8 @@ database.ref("My-Profile").orderByChild("userUid").equalTo(userUid).on('value', 
       var email = childSnapshot.val().email;
       var name = childSnapshot.val().name;
       var thumbnail = childSnapshot.val().thumbnail;
+        var gender = childSnapshot.val().gender;
+        var age = childSnapshot.val().age;
       var filter = childSnapshot.val().filter;
 
       setCity(city);
@@ -76,6 +80,8 @@ database.ref("My-Profile").orderByChild("userUid").equalTo(userUid).on('value', 
       setName(name);
       setThumbnail(thumbnail);
       setFilterQuery(city);
+      setgender(gender)
+        setage(age)
 
       items.push(childData);
     });
@@ -110,13 +116,13 @@ database.ref("My-Profile").orderByChild("userUid").equalTo(userUid).on('value', 
         <p>{data.homeSearch =="Yes" ?<Button variant="warning"
         onClick={()=>{
           firebase.database().ref("My-Profile").child(childKey)
-        .set({ homeSearch: "No", city: city, email: email, name: name, thumbnail: thumbnail, userUid: userUid, filter: "No"})}
+        .set({ homeSearch: "No", city: city, email: email, name: name, thumbnail: thumbnail, userUid: userUid, filter: "No", age: age, gender: gender})}
         }
         >Remove Status</Button> :
         <Button variant="success"
         onClick={()=>{
           firebase.database().ref("My-Profile").child(childKey)
-        .set({ homeSearch: "Yes", city: city, email: email, name: name, thumbnail: thumbnail, userUid: userUid, filter: city+yes})}
+        .set({ homeSearch: "Yes", city: city, email: email, name: name, thumbnail: thumbnail, userUid: userUid, filter: city+yes, age: age, gender: gender})}
         }
         >Change Status To: I'm searching for homes</Button>}</p>
         </Col>

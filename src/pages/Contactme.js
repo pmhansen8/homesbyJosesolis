@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
-import NavBar from '../Components/navbar'
-// Assuming useSubmit hook handles form submission
-
+import NavBar from '../Components/navbar';
+import firebase from "firebase";
+import { database } from "../config";
+import { toast } from "react-toastify";
 
 export const ContactUs = () => {
+    const [authState, setAuthState] = useState(null);
+    const [userUid, setUserUid] = useState(null);
 
-    const useSubmit = ( ) =>{
-        console.log("hello")
-    }
-
-
-    const [isLoading, response, submit ] = React.useState(null);
-
-
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (!user) {
+                setAuthState(false);
+            } else {
+                setAuthState(true);
+                setUserUid(user.uid);
+            }
+        });
+    }, []);
 
     const formik = useFormik({
         initialValues: {
@@ -30,21 +35,27 @@ export const ContactUs = () => {
             comment: Yup.string().required('Required')
         }),
         onSubmit: (values, { resetForm }) => {
-            // Assuming submit function sends a POST request to backend service
-            submit(values);
+            database.ref("ContactUs").push({
+                userUid: userUid,
+                name: values.firstName,
+                email: values.email,
+                number: values.number,
+                comment: values.comment,
+            });
+            toast("Your message has been submitted successfully!", { type: "success" });
             resetForm();
         },
     });
 
     return (
-        <div style={{ padding: '4rem 0'}}>
-            <NavBar></NavBar>
-            <div style={{maxWidth: '1024px', margin: '0 auto', padding: '2rem'}}>
-                <h1 id="contactme-section" style={{textAlign: 'center'}}>Contact me</h1>
-                <div style={{padding: '1.5rem', backgroundColor: '#fff', borderRadius: '0.375rem'}}>
+        <div style={{ padding: '4rem 0' }}>
+            <NavBar />
+            <div style={{ maxWidth: '1024px', margin: '0 auto', padding: '2rem' }}>
+                <h1 id="contactme-section" style={{ textAlign: 'center' }}>Contact me</h1>
+                <div style={{ padding: '1.5rem', backgroundColor: '#fff', borderRadius: '0.375rem' }}>
                     <form onSubmit={formik.handleSubmit}>
-                        <div style={{marginBottom: '1rem'}}>
-                            <label htmlFor="firstName" style={{display: 'block', fontWeight: 'bold'}}>Name</label>
+                        <div style={{ marginBottom: '1rem' }}>
+                            <label htmlFor="firstName" style={{ display: 'block', fontWeight: 'bold' }}>Name</label>
                             <input
                                 id="firstName"
                                 name="firstName"
@@ -59,11 +70,11 @@ export const ContactUs = () => {
                                 }}
                             />
                             {formik.errors.firstName && formik.touched.firstName && (
-                                <div style={{color: 'red', fontSize: '0.875rem'}}>{formik.errors.firstName}</div>
+                                <div style={{ color: 'red', fontSize: '0.875rem' }}>{formik.errors.firstName}</div>
                             )}
                         </div>
-                        <div style={{marginBottom: '1rem'}}>
-                            <label htmlFor="email" style={{display: 'block', fontWeight: 'bold'}}>Email Address</label>
+                        <div style={{ marginBottom: '1rem' }}>
+                            <label htmlFor="email" style={{ display: 'block', fontWeight: 'bold' }}>Email Address</label>
                             <input
                                 id="email"
                                 name="email"
@@ -79,11 +90,11 @@ export const ContactUs = () => {
                                 }}
                             />
                             {formik.errors.email && formik.touched.email && (
-                                <div style={{color: 'red', fontSize: '0.875rem'}}>{formik.errors.email}</div>
+                                <div style={{ color: 'red', fontSize: '0.875rem' }}>{formik.errors.email}</div>
                             )}
                         </div>
-                        <div style={{marginBottom: '1rem'}}>
-                            <label htmlFor="number" style={{display: 'block', fontWeight: 'bold'}}>Number</label>
+                        <div style={{ marginBottom: '1rem' }}>
+                            <label htmlFor="number" style={{ display: 'block', fontWeight: 'bold' }}>Number</label>
                             <input
                                 id="number"
                                 name="number"
@@ -98,11 +109,11 @@ export const ContactUs = () => {
                                 }}
                             />
                             {formik.errors.number && formik.touched.number && (
-                                <div style={{color: 'red', fontSize: '0.875rem'}}>{formik.errors.number}</div>
+                                <div style={{ color: 'red', fontSize: '0.875rem' }}>{formik.errors.number}</div>
                             )}
                         </div>
-                        <div style={{marginBottom: '1rem'}}>
-                            <label htmlFor="comment" style={{display: 'block', fontWeight: 'bold'}}>Your message</label>
+                        <div style={{ marginBottom: '1rem' }}>
+                            <label htmlFor="comment" style={{ display: 'block', fontWeight: 'bold' }}>Your message</label>
                             <textarea
                                 id="comment"
                                 name="comment"
@@ -118,10 +129,10 @@ export const ContactUs = () => {
                                 }}
                             ></textarea>
                             {formik.errors.comment && formik.touched.comment && (
-                                <div style={{color: 'red', fontSize: '0.875rem'}}>{formik.errors.comment}</div>
+                                <div style={{ color: 'red', fontSize: '0.875rem' }}>{formik.errors.comment}</div>
                             )}
                         </div>
-                        <div style={{textAlign: 'center'}}>
+                        <div style={{ textAlign: 'center' }}>
                             <button
                                 type="submit"
                                 style={{
@@ -143,4 +154,3 @@ export const ContactUs = () => {
         </div>
     );
 };
-

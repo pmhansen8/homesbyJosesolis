@@ -73,9 +73,10 @@ const Logout = () => {
       {authState ? (
        <React.Fragment>
           <Nav.Link as={Link} to="/about" className={pos === "top" ? "text-light": "text-dark"}>About</Nav.Link>
-      <Nav.Link as={Link} to="/listings" className={pos === "top" ? "text-light": "text-dark"}>Listings</Nav.Link>
+      <Nav.Link as={Link} to="/reviews" className={pos === "top" ? "text-light": "text-dark"}>reviews</Nav.Link>
+           <Nav.Link as={Link} to="testimonies" className={pos === "top" ? "text-light": "text-dark"}>Testimonies</Nav.Link>
       <Nav.Link as={Link} to="/contact-me" className={pos === "top" ? "text-light": "text-dark"}>Contact Me</Nav.Link>
-           <Nav.Link as={Link} to="sellers" className={pos === "top" ? "text-light": "text-dark"}>Sellers</Nav.Link>
+
       </React.Fragment>
       ):""}
     </Nav>
@@ -87,7 +88,6 @@ const Logout = () => {
         <>
         <Container>
         <Nav.Link as={Link} to="/my-profile" className="text-dark">My Profile</Nav.Link>
-        <Nav.Link as={Link} to="/my-bookings" className="text-dark">Saved Homes</Nav.Link>
         <Nav.Link as={Link} to="/mortgage-calculator" className="text-dark">Mortgage Calulator</Nav.Link>
         </Container>
         </>
@@ -105,13 +105,7 @@ const Logout = () => {
         ) :""}
       </NavDropdown>
 
-    {authState ? (
-    <>
-    <Navbar.Text>
-      <Link to="/listings"><Button className="host-btn" variant="outline-primary">Search Homes</Button></Link>
-    </Navbar.Text>
-    </>
-      ):""}
+
 
   </Navbar.Collapse>
   </Navbar.Collapse>

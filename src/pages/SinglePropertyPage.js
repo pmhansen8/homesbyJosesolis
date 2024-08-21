@@ -25,6 +25,7 @@ import { auth, database } from "../config";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
 import ReadReviews from '../Components/ReadReviews'
+import '../Css/Button.css'
 
 
 export default function SinglePropertyPage() {
@@ -48,6 +49,8 @@ export default function SinglePropertyPage() {
   const [stars, setStars] = useState("")
   const [review, setReview] = useState("")
   const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [check, changecheck] = useState()
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(function (user) {
@@ -60,6 +63,7 @@ export default function SinglePropertyPage() {
       }
     });
   }, []);
+
 
   //get listing data
   useEffect(() => {
@@ -162,7 +166,167 @@ export default function SinglePropertyPage() {
     function handleChange(event) {
       setStars(event.target.value);
     }
-  
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (!user) {
+        setAuthState(false);
+      } else {
+        const userUid = user.uid;
+
+        // Fetch user profile data from the database
+        const ref = firebase.database().ref("My-Profile");
+        ref.orderByChild("userUid").equalTo(userUid).once("value", (snapshot) => {
+          if (snapshot.exists()) {
+            let profile = null;
+
+            // Assuming there's only one profile per userUid
+            snapshot.forEach((childSnapshot) => {
+              profile = childSnapshot.val(); // Get the profile object
+            });
+
+            const propertyKeys = profile.propertyKeys || [];
+
+            if (propertyKeys.includes(propertyKey)) {
+              changecheck(false);
+              console.log("Property is saved");
+            } else {
+              changecheck(true);
+              console.log("Property is not saved");
+            }
+          } else {
+            console.log("No profile found for the provided userUid.");
+          }
+        });
+      }
+    });
+  }, [propertyKey]);
+
+
+
+  function housenotsaved() {
+    if (!userUid || !propertyKey) {
+      return;
+    }
+
+    const ref = database.ref("My-Profile");
+
+    ref.orderByChild("userUid").equalTo(userUid).once("value", snapshot => {
+      if (snapshot.exists()) {
+        snapshot.forEach(childSnapshot => {
+          const key = childSnapshot.key;
+          const profile = childSnapshot.val();
+
+          const propertyKeys = profile.propertyKeys || [];
+
+          if (!propertyKeys.includes(propertyKey)) {
+            return; // If the propertyKey is not found, exit early.
+          }
+
+          // Remove the propertyKey from the array
+          const updatedPropertyKeys = propertyKeys.filter(key => key !== propertyKey);
+
+          // Update the database with the new propertyKeys array
+          ref.child(key).update({
+            propertyKeys: updatedPropertyKeys,
+          })
+              .then(() => {
+                toast("House Successfully Unsaved", { type: "success" });
+                changecheck(true); // Set check to true after unsaving
+              })
+              .catch((error) => {
+                console.error('Error updating profile:', error);
+              });
+        });
+      } else {
+        console.log('No profile found for the provided userUid.');
+      }
+    })
+        .catch((error) => {
+          console.error('Error querying profile:', error);
+        });
+
+    console.log("hello");
+
+    // Ensure the form ID is correct and exists
+    const formElement = document.getElementById("review-form");
+    if (formElement) {
+      formElement.reset();
+    } else {
+      console.error('Form element not found');
+    }
+  }
+
+  function housesaved(){
+
+
+
+    if (!userUid || !propertyKey) {
+      return;
+    }
+
+    const ref = database.ref("My-Profile");
+
+    ref.orderByChild("userUid").equalTo(userUid).once("value", snapshot => {
+      console.log('Snapshot:', snapshot.val());
+      if (snapshot.exists()) {
+        console.log(snapshot)
+        snapshot.forEach(childSnapshot => {
+
+          const key = childSnapshot.key;
+          const profile = childSnapshot.val();
+
+          console.log('Profile:', profile);
+
+          const propertyKeys = profile.propertyKeys || [];
+
+          if (propertyKeys.includes(propertyKey)) {
+            return;
+          }
+
+
+          if (propertyKeys.length > 50) {
+            console.log('PropertyKeys length exceeded limit');
+            return;
+          }
+
+          propertyKeys.push(propertyKey);
+
+          ref.child(key).update({
+            propertyKeys: propertyKeys,
+          })
+              .then(() => {
+                toast("House Successfully Saved", { type: "success" });
+              }).then(() => {
+            changecheck(false)
+          })
+              .catch((error) => {
+                console.error('Error updating profile:', error);
+              });
+        });
+      } else {
+        console.log('No profile found for email:', email);
+      }
+    })
+        .catch((error) => {
+          console.error('Error querying profile:', error);
+        });
+
+    console.log("hello");
+
+
+    // Ensure the form ID is correct and exists
+    const formElement = document.getElementById("review-form");
+    if (formElement) {
+      formElement.reset();
+    } else {
+      console.error('Form element not found');
+    }
+  };
+
+  console.log(check)
+
+
 
   //Redirect after form submission
   if (submit === "Submitted") {
@@ -219,23 +383,23 @@ export default function SinglePropertyPage() {
                 <Card>
                   <h4 className="pl-2 pt-2">{data.title}</h4>
                   <p className="text-lead pl-2">
-                    <FontAwesomeIcon icon={faMapMarkerAlt} /> {data.city},
+                    <FontAwesomeIcon icon={faMapMarkerAlt}/> {data.city},
                     {data.address}&nbsp;&nbsp;
-                    <FontAwesomeIcon icon={faHome} /> {data.category}
+                    <FontAwesomeIcon icon={faHome}/> {data.category}
                   </p>
 
                   <Row className="p-2">
                     <Col lg={4} md={4} sm={4}>
                       <Card className="mt-2">
                         <Card.Body>
-                          <FontAwesomeIcon icon={faHome} /> {data.category}
+                          <FontAwesomeIcon icon={faHome}/> {data.category}
                         </Card.Body>
                       </Card>
                     </Col>
                     <Col lg={4} md={4} sm={4} className="mt-2">
                       <Card>
                         <Card.Body>
-                          <FontAwesomeIcon icon={faBed} /> Bedrooms:
+                          <FontAwesomeIcon icon={faBed}/> Bedrooms:
                           {data.bedrooms}
                         </Card.Body>
                       </Card>
@@ -243,7 +407,7 @@ export default function SinglePropertyPage() {
                     <Col lg={4} md={4} sm={4} className="mt-2">
                       <Card>
                         <Card.Body>
-                          <FontAwesomeIcon icon={faShower} /> Bathrooms:
+                          <FontAwesomeIcon icon={faShower}/> Bathrooms:
                           {data.bathrooms}
                         </Card.Body>
                       </Card>
@@ -256,23 +420,23 @@ export default function SinglePropertyPage() {
                     <Row>
                       <Col sm={12} lg={3} md={3}>
                         <p className="text-lead">
-                          <FontAwesomeIcon icon={faArrowCircleRight} /> Listing Price: {data.per_night}
+                          <FontAwesomeIcon icon={faArrowCircleRight}/> Listing Price: {data.per_night}
                         </p>
                       </Col>
                       <Col sm={12} lg={3} md={3}>
                         <p className="text-lead">
-                          <FontAwesomeIcon icon={faArrowCircleRight} /> Reduced Price: {data.per_week}
+                          <FontAwesomeIcon icon={faArrowCircleRight}/> Reduced Price: {data.per_week}
                         </p>
                       </Col>
                       <Col sm={12} lg={3} md={3}>
                         <p className="text-lead">
                           {" "}
-                          <FontAwesomeIcon icon={faArrowCircleRight} /> Interest Rate: {data.per_month}
+                          <FontAwesomeIcon icon={faArrowCircleRight}/> Interest Rate: {data.per_month}
                         </p>
                       </Col>
                       <Col sm={12} lg={3} md={3}>
                         <p className="text-lead">
-                          <FontAwesomeIcon icon={faArrowCircleRight} /> Per
+                          <FontAwesomeIcon icon={faArrowCircleRight}/> Per
                           Year: {data.per_year}
                         </p>
                       </Col>
@@ -281,55 +445,62 @@ export default function SinglePropertyPage() {
                     <h4 className="mt-4">Amenities</h4>
                     <Row>
                       <Col sm={12} lg={3} md={3}>
-                      <p className="text-lead">
-                      Living Room:&nbsp;
-                        {data.livingRoom == "Yes" ? <FontAwesomeIcon icon={faCheckSquare} /> : <FontAwesomeIcon icon={faTimesCircle} />}
-                         
+                        <p className="text-lead">
+                          Living Room:&nbsp;
+                          {data.livingRoom == "Yes" ? <FontAwesomeIcon icon={faCheckSquare}/> :
+                              <FontAwesomeIcon icon={faTimesCircle}/>}
+
                         </p>
                       </Col>
                       <Col sm={12} lg={3} md={3}>
-                      <p className="text-lead">
-                     Internet:&nbsp;
-                        {data.internet == "Yes" ? <FontAwesomeIcon icon={faCheckSquare} /> : <FontAwesomeIcon icon={faTimesCircle} />}
-                          
+                        <p className="text-lead">
+                          Internet:&nbsp;
+                          {data.internet == "Yes" ? <FontAwesomeIcon icon={faCheckSquare}/> :
+                              <FontAwesomeIcon icon={faTimesCircle}/>}
+
                         </p>
                       </Col>
                       <Col sm={12} lg={3} md={3}>
-                      <p className="text-lead">
-                     Gym:&nbsp;
-                        {data.gym == "Yes" ? <FontAwesomeIcon icon={faCheckSquare} /> : <FontAwesomeIcon icon={faTimesCircle} />}
-                          
+                        <p className="text-lead">
+                          Gym:&nbsp;
+                          {data.gym == "Yes" ? <FontAwesomeIcon icon={faCheckSquare}/> :
+                              <FontAwesomeIcon icon={faTimesCircle}/>}
+
                         </p>
                       </Col>
                       <Col sm={12} lg={3} md={3}>
-                      <p className="text-lead">
-                     Parking Space:&nbsp;
-                        {data.parking == "Yes" ? <FontAwesomeIcon icon={faCheckSquare} /> : <FontAwesomeIcon icon={faTimesCircle} />}
-                          
+                        <p className="text-lead">
+                          Parking Space:&nbsp;
+                          {data.parking == "Yes" ? <FontAwesomeIcon icon={faCheckSquare}/> :
+                              <FontAwesomeIcon icon={faTimesCircle}/>}
+
                         </p>
                       </Col>
                     </Row>
 
                     <Row>
 
-                    <Col sm={12} lg={3} md={3}>
-                      <p className="text-lead">
-                     Air Conditioner:&nbsp;
-                        {data.ac == "Yes" ? <FontAwesomeIcon icon={faCheckSquare} /> : <FontAwesomeIcon icon={faTimesCircle} />}
+                      <Col sm={12} lg={3} md={3}>
+                        <p className="text-lead">
+                          Air Conditioner:&nbsp;
+                          {data.ac == "Yes" ? <FontAwesomeIcon icon={faCheckSquare}/> :
+                              <FontAwesomeIcon icon={faTimesCircle}/>}
                         </p>
-                        </Col>
-                    <Col sm={12} lg={3} md={3}>
-                      <p className="text-lead">
-                     Gated Security:&nbsp;
-                        {data.gatedSecurity == "Yes" ? <FontAwesomeIcon icon={faCheckSquare} /> : <FontAwesomeIcon icon={faTimesCircle} />}
+                      </Col>
+                      <Col sm={12} lg={3} md={3}>
+                        <p className="text-lead">
+                          Gated Security:&nbsp;
+                          {data.gatedSecurity == "Yes" ? <FontAwesomeIcon icon={faCheckSquare}/> :
+                              <FontAwesomeIcon icon={faTimesCircle}/>}
                         </p>
-                        </Col>
-                    <Col sm={12} lg={3} md={3}>
-                      <p className="text-lead">
-                     Water Supply:&nbsp;
-                        {data.waterSupply == "Yes" ? <FontAwesomeIcon icon={faCheckSquare} /> : <FontAwesomeIcon icon={faTimesCircle} />}
+                      </Col>
+                      <Col sm={12} lg={3} md={3}>
+                        <p className="text-lead">
+                          Water Supply:&nbsp;
+                          {data.waterSupply == "Yes" ? <FontAwesomeIcon icon={faCheckSquare}/> :
+                              <FontAwesomeIcon icon={faTimesCircle}/>}
                         </p>
-                        </Col>
+                      </Col>
 
                     </Row>
 
@@ -346,63 +517,70 @@ export default function SinglePropertyPage() {
                       src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;t=&amp;z=11&amp;ie=UTF8&amp;iwloc=B&amp;output=embed&amp;q=delhi"
                     ></iframe> */}
 
-                    <hr />
-                    
+                    <hr/>
+
                     <Form onSubmit={submitReview} id="review-form">
-                    <Form.Row>
-                      <Form.Group
-                        as={Col}
-                        lg={8}
-                        md={8}
-                        sm={12}
-                        controlId="formBasicText"
-                      >
-                        <Form.Label>Write Your Review</Form.Label>
-                        <Form.Control type="text" placeholder="Write here..." required onChange={(e)=>setReview(e.target.value)}/>
-                      </Form.Group>
-                      <Form.Group
-                        as={Col}
-                        lg={4}
-                        md={4}
-                        sm={12}
-                        controlId="formBasicText"
-                      >
-                        <Form.Label>Rating</Form.Label>
-                        <Form.Control
-                    as="select"
-                    name="category"
-                    onChange={handleChange}
-                  >
-                    <option>Select</option>
-                    <option value="5">5 Star</option>
-                    <option value="4">4 Star</option>
-                    <option value="3">3 Star</option>
-                    <option value="2">2 Star</option>
-                    <option value="1">1 Star</option>
-                  </Form.Control>
-                      </Form.Group>
+                      <Form.Row>
+                        <Form.Group
+                            as={Col}
+                            lg={8}
+                            md={8}
+                            sm={12}
+                            controlId="formBasicText"
+                        >
+                          <Form.Label>Write Your Review</Form.Label>
+                          <Form.Control type="text" placeholder="Write here..." required
+                                        onChange={(e) => setReview(e.target.value)}/>
+                        </Form.Group>
+                        <Form.Group
+                            as={Col}
+                            lg={4}
+                            md={4}
+                            sm={12}
+                            controlId="formBasicText"
+                        >
+                          <Form.Label>Rating</Form.Label>
+                          <Form.Control
+                              as="select"
+                              name="category"
+                              onChange={handleChange}
+                          >
+                            <option>Select</option>
+                            <option value="5">5 Star</option>
+                            <option value="4">4 Star</option>
+                            <option value="3">3 Star</option>
+                            <option value="2">2 Star</option>
+                            <option value="1">1 Star</option>
+                          </Form.Control>
+                        </Form.Group>
                       </Form.Row>
-                     
+
                       <Button variant="success" type="submit">
                         Post Review
                       </Button>
-                      
+
                     </Form>
-                   
-                    <hr />
+
+                    <hr/>
                     <ReadReviews/>
                     <br/>
                   </Container>
                 </Card>
               </Col>
-
+              <p >
+                      {check === true ? (
+                          <Button className="property-button" onClick={() => housesaved()}>Save House</Button>
+                      ) : (
+                          <Button className="property-button1" onClick={() => housenotsaved()}>Unsave House</Button>
+                      )}
+              </p>
 
 
             </Row>
           </Container>
-          <br />
-          <br />
-          <br />
+          <br/>
+          <br/>
+          <br/>
         </>
       ))}
     </>
