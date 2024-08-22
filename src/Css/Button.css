@@ -10,3 +10,7 @@
     font-size: 2em;
     max-width: 190%;
 }
+
+.cardy:hover {
+background-color: white;
+}
