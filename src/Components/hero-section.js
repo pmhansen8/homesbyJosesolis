@@ -3,13 +3,13 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import jose from '../pictures/jose.jpg';
-import Vdo from '../pictures/video-background.mp4';
+import Vdo from '../pictures/premium_photo-1680185462024-449a2abaec28.jfif';
 import Thumbnail from '../pictures/cover.jpg';
 
 export default function HeroSection() {
     return (
         <div className="hero-section" style={{ position: 'relative', height: '80vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <video autoPlay loop muted poster={Thumbnail} style={{ position: "absolute", width: "100%", height: "100%", objectFit: "cover", zIndex: "-1" }}>
+            <video autoPlay loop muted poster={Vdo} style={{ position: "absolute", width: "100%", height: "100%", objectFit: "cover", zIndex: "-1" }}>
                 <source src={Vdo} type="video/mp4"></source>
             </video>
 
