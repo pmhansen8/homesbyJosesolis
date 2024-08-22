@@ -8,7 +8,7 @@ import video5 from '../pictures/IMG_0_4.MOV';
 import video6 from '../pictures/IMG_0_5.MOV';
 import video7 from '../pictures/IMG_0_6.MOV';
 
-const Proj = [
+export const Proj = [
     {
         title: "Alejandro",
         description: null,

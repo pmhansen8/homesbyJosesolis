@@ -103,7 +103,7 @@ export const Reviews = () =>{
                             </Form.Group>
                         </Form.Row>
 
-                        <Button variant="success" type="submit">
+                        <Button variant="success" type="submit" style={{marginLeft: "1%"}}>
                             Post Review
                         </Button>
 
