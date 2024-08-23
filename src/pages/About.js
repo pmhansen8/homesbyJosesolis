@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from '../Components/navbar'
 import jose from '../pictures/jose.jpg'
+import Footer from '../Components/Footer'
 
 // Define the content as constants
 const greeting = "Hello, I am Jose!";
@@ -29,7 +30,7 @@ export const About = () => (
             color: 'black',
             height: '100vh',
             textAlign: 'center',
-            padding: '2rem',
+            paddingTop: '20rem',
 
         }}
     >
@@ -105,7 +106,7 @@ export const About = () => (
 
 </p>
 
-
+<Footer ></Footer>
 </div>
 )
 ;

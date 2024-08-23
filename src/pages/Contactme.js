@@ -5,6 +5,7 @@ import NavBar from '../Components/navbar';
 import firebase from "firebase";
 import { database } from "../config";
 import { toast } from "react-toastify";
+import Footer from "../Components/Footer";
 
 export const ContactUs = () => {
     const [authState, setAuthState] = useState(null);
@@ -48,7 +49,7 @@ export const ContactUs = () => {
     });
 
     return (
-        <div style={{ padding: '4rem 0' }}>
+        <div style={{ paddingTop: '4rem' }}>
             <NavBar />
             <div style={{ maxWidth: '1024px', margin: '0 auto', padding: '2rem' }}>
                 <h1 id="contactme-section" style={{ textAlign: 'center' }}>Contact me</h1>
@@ -148,9 +149,13 @@ export const ContactUs = () => {
                                 Submit
                             </button>
                         </div>
+
                     </form>
+
                 </div>
+
             </div>
+            <Footer />
         </div>
     );
 };

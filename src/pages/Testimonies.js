@@ -8,34 +8,35 @@ import video4 from '../pictures/IMG_0_3.MOV';
 import video5 from '../pictures/IMG_0_4.MOV';
 import video6 from '../pictures/IMG_0_5.MOV';
 import video7 from '../pictures/IMG_0_6.MOV';
+import Footer from '../Components/Footer'
 
 export const Proj = [
     {
-        title: "Alejandro",
+        title: "LT. Rios",
         description: null,
         imageSrc: video1,
         url: "",
     },
     {
-        title: "",
+        title: "Emelys S.",
         description: null,
         imageSrc: video2,
         url: "https://github.com/pmhansen8/JAVA",
     },
     {
-        title: "",
+        title: "SSG Evans",
         description: null,
         imageSrc: video3,
         url: "https://github.com/pmhansen8/react-project",
     },
     {
-        title: "",
+        title: "Damien S.",
         description: null,
         imageSrc: video4,
         url: "",
     },
     {
-        title: "",
+        title: "Msgt Rac",
         description: null,
         imageSrc: video5,
         url: "https://github.com/pmhansen8/JAVA",
@@ -47,7 +48,7 @@ export const Proj = [
         url: "https://github.com/pmhansen8/react-project",
     },
     {
-        title: "",
+        title: "Msgt Vargas",
         description: null,
         imageSrc: video7,
         url: "https://github.com/pmhansen8/react-project",
@@ -58,14 +59,16 @@ export const Testimonies = () => {
     return (
         <div>
             <NavBar />
-            <div style={{ marginTop: "6%", paddingBottom: '3rem' }}>
+            <div style={{marginTop: "6%", paddingBottom: '3rem'}}>
+                <h1 id="contactme-section" style={{textAlign: 'center'}}>Testimonies</h1>
                 <Container>
                     <Row className="justify-content-center">
                         {Proj.map((proj, index) => (
-                            <Col xs={12} sm={6} md={6} lg={6} className="mb-4 d-flex justify-content-center" key={index}>
-                                <Card style={{ width: '18rem' }}> {/* Adjusted width */}
+                            <Col xs={12} sm={6} md={6} lg={6} className="mb-4 d-flex justify-content-center"
+                                 key={index}>
+                                <Card style={{width: '18rem'}}> {/* Adjusted width */}
                                     <video width="100%" controls>
-                                        <source src={proj.imageSrc} type="video/mp4" />
+                                        <source src={proj.imageSrc} type="video/mp4"/>
                                         Your browser does not support the video tag.
                                     </video>
                                     <Card.Body>
@@ -76,8 +79,10 @@ export const Testimonies = () => {
                             </Col>
                         ))}
                     </Row>
+
                 </Container>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

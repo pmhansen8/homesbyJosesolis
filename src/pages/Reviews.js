@@ -5,6 +5,7 @@ import {toast} from "react-toastify";
 import firebase from "firebase";
 import NavBar from '../Components/navbar'
 import ReadReviews from "../Components/ReadReviews";
+import Footer from '../Components/Footer'
 
 
 export const Reviews = () =>{
@@ -42,6 +43,7 @@ export const Reviews = () =>{
                 setAuthState(true);
                 setUserUid(user.uid);
                 setName(user.displayName);
+
             }
         });
     }, []);
@@ -64,6 +66,7 @@ export const Reviews = () =>{
         <div>
             <NavBar></NavBar>
             <div style={{marginTop: "5%"}}></div>
+            <h1  style={{textAlign: 'center'}}>Reviews</h1>
             <Container>
                 <Card>
 
@@ -111,6 +114,9 @@ export const Reviews = () =>{
                     <ReadReviews/>
                 </Card>
             </Container>
+            <div style={{paddingTop: '10rem'}}>
+                <Footer></Footer>
+            </div>
         </div>
     )
 }
