@@ -65,8 +65,8 @@ export const Reviews = () =>{
     return(
         <div>
             <NavBar></NavBar>
-            <div style={{marginTop: "5%"}}></div>
-            <h1  style={{textAlign: 'center'}}>Reviews</h1>
+            <div className="hello" ></div>
+            <h1 style={{textAlign: 'center'}}>Reviews</h1>
             <Container>
                 <Card>
 
@@ -117,6 +117,16 @@ export const Reviews = () =>{
             <div style={{paddingTop: '10rem'}}>
                 <Footer></Footer>
             </div>
+            <style jsx>{`
+                .hello{
+                    margin-top: 5%;
+                }
+                @media (max-width: 768px) {
+                .hello{
+                    margin-top: 15%;
+                }
+                }
+            `}</style>
         </div>
     )
 }

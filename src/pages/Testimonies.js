@@ -8,7 +8,7 @@ import video4 from '../pictures/IMG_0_3.MOV';
 import video5 from '../pictures/IMG_0_4.MOV';
 import video6 from '../pictures/IMG_0_5.MOV';
 import video7 from '../pictures/IMG_0_6.MOV';
-import Footer from '../Components/Footer'
+import Footer from '../Components/Footer';
 
 export const Proj = [
     {
@@ -59,16 +59,15 @@ export const Testimonies = () => {
     return (
         <div>
             <NavBar />
-            <div style={{marginTop: "6%", paddingBottom: '3rem'}}>
-                <h1 id="contactme-section" style={{textAlign: 'center'}}>Testimonies</h1>
-                <Container>
+            <div style={{ marginTop: "6%", paddingBottom: '3rem', paddingTop: '3rem' }}>
+                <h1 id="contactme-section" style={{ textAlign: 'center', marginBottom: '2rem' }}>Testimonies</h1>
+                <Container style={{ paddingLeft: '1rem', paddingRight: '1rem' }}>
                     <Row className="justify-content-center">
                         {Proj.map((proj, index) => (
-                            <Col xs={12} sm={6} md={6} lg={6} className="mb-4 d-flex justify-content-center"
-                                 key={index}>
-                                <Card style={{width: '18rem'}}> {/* Adjusted width */}
+                            <Col xs={12} sm={6} md={4} lg={3} className="mb-4 d-flex justify-content-center" key={index}>
+                                <Card style={{ width: '100%', maxWidth: '18rem' }}>
                                     <video width="100%" controls>
-                                        <source src={proj.imageSrc} type="video/mp4"/>
+                                        <source src={proj.imageSrc} type="video/mp4" />
                                         Your browser does not support the video tag.
                                     </video>
                                     <Card.Body>
@@ -79,10 +78,9 @@ export const Testimonies = () => {
                             </Col>
                         ))}
                     </Row>
-
                 </Container>
             </div>
-            <Footer></Footer>
+            <Footer />
         </div>
     );
 };

@@ -1,7 +1,7 @@
 import React from "react";
-import NavBar from '../Components/navbar'
-import jose from '../pictures/jose.jpg'
-import Footer from '../Components/Footer'
+import NavBar from '../Components/navbar';
+import jose from '../pictures/jose.jpg';
+import Footer from '../Components/Footer';
 
 // Define the content as constants
 const greeting = "Hello, I am Jose!";
@@ -16,98 +16,102 @@ const bio2 = "I am Jose Solis, originally from Pennsylvania, but made my way to 
     "\n" +
     "I have a wonderful family consisting of two (2) gorgeous girls and a beautiful wife. Outside of real estate, I enjoy working on projects within my household. I intend to launch a YouTube channel dedicated to assisting others with beautification projects throughout the home. While I served in the marines developed an affinity for travel, which I still enjoy today. I can initiate a conversation in French, German, Italian and Japanese and I love learning about geography and history. You can also find me in a museum, learning about cultures and people.\n" +
     "\n" +
-    "Buying or selling a home can be a complicated process, but I am here to ease that burden, while educating and keeping you informed every step of the way. Reach out to me, let's schedule an appointment. I look forward to helping you fulfill your real estate needs." ;
-
-
+    "Buying or selling a home can be a complicated process, but I am here to ease that burden, while educating and keeping you informed every step of the way. Reach out to me, let's schedule an appointment. I look forward to helping you fulfill your real estate needs.";
 
 export const About = () => (
     <div
         style={{
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            color: 'black',
-            height: '100vh',
-            textAlign: 'center',
-            paddingTop: '20rem',
-
+            minHeight: '100vh',
         }}
     >
-        <NavBar></NavBar>
-        <img
-            src={jose}
-            style={{
-                width: '200px',
-                height: '200px',
-                borderRadius: '50%',
-                objectFit: 'cover',
-                marginTop: '55%'
-            }}
-        />
-        <h1 style={{fontSize: '2.5rem', margin: '1rem 0'}}>
-            {greeting}
-        </h1>
-        <h2 style={{fontSize: '1.5rem', margin: '0.5rem 0', color: 'black'}}>
-            {bio1}
-        </h2>
-        <p style={{fontSize: '1rem', lineHeight: '1.5', margin: '0.5rem 0'}}>
-            {bio2}
-        </p>
-        <h2 style={{fontSize: '1.5rem', margin: '0.5rem 0', color: 'black'}}>
-            Experience:
-        </h2>
-        <p style={{fontSize: '1rem', lineHeight: '1.5', margin: '0.5rem 0'}}>
-            3 years 11 months
-        </p>
-        <h2 style={{fontSize: '1.5rem', margin: '0.5rem 0', color: 'black'}}>
-            Price range (last 24 months):
-        </h2>
-        <p style={{fontSize: '1rem', lineHeight: '1.5', margin: '0.5rem 0'}}>
-            $389K - $389K
-        </p>
-        <h2 style={{fontSize: '1.5rem', margin: '0.5rem 0', color: 'black'}}>
-            Areas served:
-        </h2>
+        <NavBar />
         <div
             style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(4, 1fr)', // 2 columns
-                gap: '1rem',
-                width: '100%', // Adjust width as needed
-                maxWidth: '600px', // Maximum width of the grid container
+                flex: '1', // Allows the main content area to expand
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                color: 'black',
                 textAlign: 'center',
+                paddingTop: '5rem',
+                paddingBottom: '4rem'
             }}
         >
-            <p>Altamonte Springs</p>
-            <p>Apopka</p>
-            <p>Casselberry</p>
-            <p>Central Florida</p>
-            <p>Geneva</p>
-            <p>Gotha</p>
-            <p>Kissimmee</p>
-            <p>Lake Mary</p>
-            <p>Longwood</p>
-            <p>Montverde</p>
-            <p>Oak Hill</p>
-            <p>Ocoee</p>
-            <p>Orlando</p>
-            <p>Oviedo</p>
-            <p>Sanford</p>
-            <p>Winter Garden</p>
-            <p>Winter Park</p>
-            <p>Winter Springs</p>
+            <img
+                src={jose}
+                alt="Jose Solis"
+                style={{
+                    width: '200px',
+                    height: '200px',
+                    borderRadius: '50%',
+                    objectFit: 'cover',
+                    marginTop: '1rem'
+                }}
+            />
+            <h1 style={{ fontSize: '2.5rem', margin: '1rem 0' }}>
+                {greeting}
+            </h1>
+            <h2 style={{ fontSize: '1.5rem', margin: '0.5rem 0', color: 'black' }}>
+                {bio1}
+            </h2>
+            <p style={{ fontSize: '1rem', lineHeight: '1.5', margin: '0.5rem 0', maxWidth: '800px' }}>
+                {bio2}
+            </p>
+            <h2 style={{ fontSize: '1.5rem', margin: '0.5rem 0', color: 'black' }}>
+                Experience:
+            </h2>
+            <p style={{ fontSize: '1rem', lineHeight: '1.5', margin: '0.5rem 0' }}>
+                3 years 11 months
+            </p>
+            <h2 style={{ fontSize: '1.5rem', margin: '0.5rem 0', color: 'black' }}>
+                Price range (last 24 months):
+            </h2>
+            <p style={{ fontSize: '1rem', lineHeight: '1.5', margin: '0.5rem 0' }}>
+                $389K - $389K
+            </p>
+            <h2 style={{ fontSize: '1.5rem', margin: '0.5rem 0', color: 'black' }}>
+                Areas served:
+            </h2>
+            <div
+                style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', // Responsive grid layout
+                    gap: '1rem',
+                    width: '100%',
+                    maxWidth: '800px',
+                    textAlign: 'center',
+                    margin: '0 auto'
+                }}
+            >
+                <p>Altamonte Springs</p>
+                <p>Apopka</p>
+                <p>Casselberry</p>
+                <p>Central Florida</p>
+                <p>Geneva</p>
+                <p>Gotha</p>
+                <p>Kissimmee</p>
+                <p>Lake Mary</p>
+                <p>Longwood</p>
+                <p>Montverde</p>
+                <p>Oak Hill</p>
+                <p>Ocoee</p>
+                <p>Orlando</p>
+                <p>Oviedo</p>
+                <p>Sanford</p>
+                <p>Winter Garden</p>
+                <p>Winter Park</p>
+                <p>Winter Springs</p>
+            </div>
+            <h2 style={{ fontSize: '1.5rem', margin: '0.5rem 0', color: 'black' }}>
+                Spoken Languages:
+            </h2>
+            <p style={{ fontSize: '1rem', lineHeight: '1.5', margin: '0.5rem 0' }}>
+                English & Spanish
+            </p>
         </div>
-<h2 style={{fontSize: '1.5rem', margin: '0.5rem 0', color: 'black'}}>
-    Spoken Languages:
-</h2>
-<p style={{fontSize: '1rem', lineHeight: '1.5', margin: '0.5rem 0', paddingBottom: '3rem'}}>
-    English & Spanish
-
-</p>
-
-<Footer ></Footer>
-</div>
-)
-;
-
+        <Footer />
+    </div>
+);
