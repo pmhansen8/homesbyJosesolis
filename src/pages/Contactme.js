@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
+import {Redirect} from 'react-router-dom'; // Import useNavigate
 import NavBar from '../Components/navbar';
 import firebase from "firebase";
 import { database } from "../config";
@@ -47,6 +48,14 @@ export const ContactUs = () => {
             resetForm();
         },
     });
+
+    if (authState === false) {
+        return(
+            <>
+                <Redirect to="/" />
+            </>
+        )
+    }
 
     return (
         <div style={{ paddingTop: '4rem' }}>

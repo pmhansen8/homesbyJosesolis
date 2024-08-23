@@ -6,6 +6,7 @@ import firebase from "firebase";
 import NavBar from '../Components/navbar';
 import ReadReviews from "../Components/ReadReviews";
 import Footer from '../Components/Footer';
+import {Redirect} from "react-router-dom";
 
 export const Reviews = () => {
     const [review, setReview] = useState("");
@@ -43,6 +44,15 @@ export const Reviews = () => {
             }
         });
     }, []);
+
+
+    if (authState === false) {
+        return(
+            <>
+                <Redirect to="/" />
+            </>
+        )
+    }
 
     const submitReview = (e) => {
         e.preventDefault();
