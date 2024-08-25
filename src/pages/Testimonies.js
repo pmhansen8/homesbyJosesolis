@@ -8,17 +8,19 @@ import video4 from '../pictures/IMG_0_3.MOV';
 import video5 from '../pictures/IMG_0_4.MOV';
 import video6 from '../pictures/IMG_0_5.MOV';
 import video7 from '../pictures/IMG_0_6.MOV';
+import video8 from '../pictures/IMG_0_7.MOV';
+import video9 from '../pictures/IMG_0 (1).MOV';
 import Footer from '../Components/Footer';
 
 export const Proj = [
     {
-        title: "LT. Rios",
+        title: "LT Rios",
         description: null,
         imageSrc: video1,
         url: "",
     },
     {
-        title: "Emelys S.",
+        title: "Emelys S",
         description: null,
         imageSrc: video2,
         url: "https://github.com/pmhansen8/JAVA",
@@ -30,7 +32,7 @@ export const Proj = [
         url: "https://github.com/pmhansen8/react-project",
     },
     {
-        title: "Damien S.",
+        title: "Damien S",
         description: null,
         imageSrc: video4,
         url: "",
@@ -39,19 +41,31 @@ export const Proj = [
         title: "Msgt Rac",
         description: null,
         imageSrc: video5,
-        url: "https://github.com/pmhansen8/JAVA",
+        url: "",
     },
     {
-        title: "Gabriel Q.",
+        title: "Gabriel Q",
         description: null,
         imageSrc: video6,
-        url: "https://github.com/pmhansen8/react-project",
+        url: "",
     },
     {
         title: "Msgt Vargas",
         description: null,
         imageSrc: video7,
-        url: "https://github.com/pmhansen8/react-project",
+        url: "",
+    },
+    {
+        title: "LT Ruiz",
+        description: null,
+        imageSrc: video8,
+        url: "",
+    },
+    {
+        title: "LT Chang",
+        description: null,
+        imageSrc: video9,
+        url: "",
     },
 ];
 

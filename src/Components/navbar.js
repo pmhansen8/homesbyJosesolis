@@ -73,7 +73,7 @@ const Logout = () => {
       {authState ? (
        <React.Fragment>
           <Nav.Link as={Link} to="/about" className={pos === "top" ? "text-light": "text-dark"}>About</Nav.Link>
-      <Nav.Link as={Link} to="/reviews" className={pos === "top" ? "text-light": "text-dark"}>reviews</Nav.Link>
+      <Nav.Link as={Link} to="/reviews" className={pos === "top" ? "text-light": "text-dark"}>Reviews</Nav.Link>
            <Nav.Link as={Link} to="testimonies" className={pos === "top" ? "text-light": "text-dark"}>Testimonies</Nav.Link>
       <Nav.Link as={Link} to="/contact-me" className={pos === "top" ? "text-light": "text-dark"}>Contact Me</Nav.Link>
 
