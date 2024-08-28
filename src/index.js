@@ -24,6 +24,9 @@ import PersonalRooms from "./pages/PersonalRooms";
 import {HomeEvaluation} from "./pages/HomeEvaluation"
 import {Reviews} from "./pages/Reviews";
 import {Testimonies} from './pages/Testimonies'
+import {Messages} from './pages/Messages'
+import AgeGraph from './pages/AgeGraph'
+import LookingToBuy from './pages/LookingToBuy'
 
 
 const routing = (
@@ -49,6 +52,9 @@ const routing = (
     <Route exact path="/sellers" component={HomeEvaluation}/>
     <Route exact path="/reviews" component={Reviews}/>
     <Route exact path="/testimonies" component={Testimonies}/>
+    <Route exact path="/age-graph" component={AgeGraph}/>
+    <Route exact path="/messages" component={Messages}/>
+    <Route exact path="/looking-to-buy" component={LookingToBuy}/>
   </Router>
 )
 

@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import firebase from 'firebase'
 import { Container } from 'react-bootstrap';
+import {database} from "../config";
 
 export default function NavigationBar({companyName="Homes by Jose Solis"}) {
 
@@ -17,6 +18,23 @@ export default function NavigationBar({companyName="Homes by Jose Solis"}) {
     const [authState, setAuthState ] = useState(null);
     //Transparent scroll navbar state
     const [pos, setPos] = useState("top")
+    const [button, setButton] = useState()
+    const [shouldRedirect, setShouldRedirect] = useState(false);
+    const [check, setCheck] = useState(true);
+    const [userUid, setUserUid] = useState(null);
+
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (!user) {
+                setAuthState(false);
+            } else {
+                setAuthState(true);
+                setUserUid(user.uid);
+            }
+        });
+    }, []);
+
+
 
     useEffect (()=>{     
       var path = window.location.pathname
@@ -47,6 +65,33 @@ export default function NavigationBar({companyName="Homes by Jose Solis"}) {
         });
       }, [])
 
+
+
+    useEffect(() => {
+
+        if (!userUid) return;
+
+        const ref = database.ref("My-Profile");
+
+        ref.orderByChild("userUid").equalTo(userUid).on('value', (snapshot) => {
+            let shouldRedirect = false;
+
+            snapshot.forEach((childSnapshot) => {
+                if (childSnapshot.val().email === "pmhansen8@gmail.com") {
+                    shouldRedirect = true;
+                }
+            });
+
+
+            if(shouldRedirect){
+
+                setButton(<Nav.Link as={Link} to="/age-graph" className="text-dark">Data Dashboard</Nav.Link>)
+            }
+        });
+
+        return () => ref.off(); // Clean up the listener on component unmount
+    }, [userUid]);
+
 //signout function
 const Logout = () => {
   firebase.auth().signOut().then(()=>{
@@ -56,6 +101,10 @@ const Logout = () => {
    toast(error, {type:"error"})
   })
 }
+
+
+
+
 
 
 
@@ -89,6 +138,7 @@ const Logout = () => {
         <Container>
         <Nav.Link as={Link} to="/my-profile" className="text-dark">My Profile</Nav.Link>
         <Nav.Link as={Link} to="/mortgage-calculator" className="text-dark">Mortgage Calulator</Nav.Link>
+            {button}
         </Container>
         </>
         ) : (
