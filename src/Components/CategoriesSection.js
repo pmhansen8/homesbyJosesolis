@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card, Container, Col, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhone, faShareAlt } from "@fortawesome/free-solid-svg-icons";
-import { faInstagram, faFacebook, faTiktok } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram, faFacebook, faTiktok, faYoutube, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { Link } from 'react-router-dom';
 
 export default function CategoriesSection() {
@@ -32,7 +32,7 @@ export default function CategoriesSection() {
                 <Row className="mt-5">
                     <Col sm={12} md={4} lg={4}>
                         <Link>
-                            <Card className="category-cards text-dark mt-3 text-center">
+                            <Card className="category-cards text-dark mt-3 text-center h-100" >
                                 <Card.Body onClick={() => window.location.href = "mailto:jose.solistheflrealtor@gmail.com"} className="cursor-pointer">
                                     <FontAwesomeIcon icon={faEnvelope} size="4x" className="mb-3" />
                                     <Card.Title>Email</Card.Title>
@@ -43,7 +43,7 @@ export default function CategoriesSection() {
                         </Link>
                     </Col>
                     <Col sm={12} md={4} lg={4}>
-                        <Card className="category-cards text-dark mt-3 text-center">
+                        <Card className="category-cards text-dark mt-3 text-center h-100">
                             <Card.Body>
                                 <FontAwesomeIcon icon={faPhone} size="4x" className="mb-3" />
                                 <Card.Title>Phone</Card.Title>
@@ -54,7 +54,7 @@ export default function CategoriesSection() {
                     </Col>
                     <Col sm={12} md={4} lg={4}>
                         <Card
-                            className="category-cards text-dark mt-3 text-center"
+                            className="category-cards text-dark mt-3 text-center h-100"
                             onMouseOver={() => setHoveredCard(true)}
                             onMouseOut={() => setHoveredCard(false)}
                         >
@@ -72,7 +72,7 @@ export default function CategoriesSection() {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        instagram
+                                        Instagram
                                     </a>
                                 </Card.Text>
                                 <Card.Text>
@@ -85,7 +85,7 @@ export default function CategoriesSection() {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        facebook
+                                        Facebook
                                     </a>
                                 </Card.Text>
                                 <Card.Text>
@@ -98,7 +98,33 @@ export default function CategoriesSection() {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        tiktok
+                                        Tiktok
+                                    </a>
+                                </Card.Text>
+                                <Card.Text>
+                                    <FontAwesomeIcon icon={faYoutube} className="mr-2" />
+                                    <a
+                                        href="https://www.youtube.com/channel/UC7jArZ1TQuXQtlE61ugb4vQ?app=desktop"
+                                        style={getLinkStyle('youtube')}
+                                        onMouseOver={() => setHoveredLink('youtube')}
+                                        onMouseOut={() => setHoveredLink(null)}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        Youtube
+                                    </a>
+                                </Card.Text>
+                                <Card.Text>
+                                    <FontAwesomeIcon icon={faLinkedin} className="mr-2" />
+                                    <a
+                                        href="https://www.linkedin.com/in/jose-solis-/"
+                                        style={getLinkStyle('linkedin')}
+                                        onMouseOver={() => setHoveredLink('linkedin')}
+                                        onMouseOut={() => setHoveredLink(null)}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        LinkedIn
                                     </a>
                                 </Card.Text>
                             </Card.Body>
