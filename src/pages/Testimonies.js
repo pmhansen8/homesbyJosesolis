@@ -10,6 +10,12 @@ import video6 from '../pictures/IMG_0_5.MOV';
 import video7 from '../pictures/IMG_0_6.MOV';
 import video8 from '../pictures/IMG_0_7.MOV';
 import video9 from '../pictures/IMG_0 (1).MOV';
+import video10 from '../pictures/copy_6EE25BD2-38C4-47A3-A0AF-E761D8334689.mov';
+import video11 from '../pictures/copy_ACE98E58-7875-4775-9F42-588856961AB1.mov'
+import video12 from '../pictures/copy_C2DE0353-D65B-4942-9CBB-2B481D83E15B - VEED Export.mov'
+import video13 from '../pictures/IMG_3722.mov'
+import video14 from '../pictures/IMG_3721 - VEED Export.mp4'
+import video15 from '../pictures/copy_B014612D-6926-47F7-8EEC-F299D2075A25.mp4'
 import Footer from '../Components/Footer';
 
 export const Proj = [
@@ -66,7 +72,43 @@ export const Proj = [
         description: null,
         imageSrc: video9,
         url: "",
+    }, {
+        title: "Joey",
+        description: null,
+        imageSrc: video10,
+        url: "",
     },
+    {
+        title: "Juan",
+        description: null,
+        imageSrc: video11,
+        url: "",
+    },
+    {
+        title: "Jenhsen and Kim",
+        description: null,
+        imageSrc: video12,
+        url: "",
+    },
+    {
+        title: "Edward",
+        description: null,
+        imageSrc: video13,
+        url: "",
+    },
+    {
+        title: "Omar",
+        description: null,
+        imageSrc: video14,
+        url: "",
+    },
+    {
+        title: "Teresa",
+        description: null,
+        imageSrc: video15,
+        url: "",
+    },
+
 ];
 
 export const Testimonies = () => {
@@ -80,7 +122,7 @@ export const Testimonies = () => {
                         {Proj.map((proj, index) => (
                             <Col xs={12} sm={6} md={4} lg={3} className="mb-4 d-flex justify-content-center" key={index}>
                                 <Card style={{ width: '100%', maxWidth: '18rem' }}>
-                                    <video width="100%" controls>
+                                    <video width="100%"  height="100%" controls>
                                         <source src={proj.imageSrc} type="video/mp4" />
                                         Your browser does not support the video tag.
                                     </video>

@@ -3,6 +3,8 @@ import NavBar from '../Components/navbar';
 import jose from '../pictures/jose.jpg';
 import Footer from '../Components/Footer';
 
+import scrapeWebsite from '../tools/WebScraper'
+
 // Define the content as constants
 const greeting = "Hello, I am Jose!";
 const bio1 = "About me:";
