@@ -97,13 +97,13 @@ export const Proj = [
         url: "",
     },
     {
-        title: "Omar",
+        title: "Teresa",
         description: null,
         imageSrc: video14,
         url: "",
     },
     {
-        title: "Teresa",
+        title: "Omar",
         description: null,
         imageSrc: video15,
         url: "",
